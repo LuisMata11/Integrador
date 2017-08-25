@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Eventos</h1>
+
+<table id="tblEventos">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th>Clasificación</th>
+      <th>Tipo de evento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.titulo %></td>
+        <td><%= event.inicio %></td>
+        <td><%= event.fin %></td>
+        <td><%= event.clasificacion %></td>
+        <td><%= event.tipo_evento %></td>
+
+        <% if user_signed_in? %>
+          <td><%= link_to 'Mostrar', event, :class => 'btn btn-warning' %></td>
+          <td><%= link_to 'Modificar', edit_event_path(event), :class => 'btn btn-success' %></td>
+          <td><%= link_to 'Eliminar', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div class="panel panel-danger">
+  <div class="panel-heading">Jardin Principal</div>
+  <div class="panel-body">Conciertos gratuitos Motel y Matisse.</div>
+</div>
+<br>
+<div class="panel panel-danger">
+  <div class="panel-heading">Explanada de la Feria</div>
+  <div class="panel-body"><b>Acceso:</b> $45 <br>Incluye todos los juegos mecánicos.</div>
+</div>
+<br>
+<a href= "<%= locations_path %>" target=_blank><button type="button" class="btn btn-danger">Cómo llegar...</button></a>
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to 'Agregar Evento', new_event_path, :class => 'btn btn-info' %>
+<% end %>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="calendar1"></div>
+<div id="calendar"></div>

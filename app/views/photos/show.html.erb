@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @photo.name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @photo.description %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @photo.price %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= image_tag(photo.image)%>
+  <%= image_tag(@photo.image)%>
+  <%= image_tag f.object.image.thumb.url %>
+</p>
+
+<%= link_to 'Editar', edit_photo_path(@photo) %> |
+<%= link_to 'Regresar', photos_path %>
