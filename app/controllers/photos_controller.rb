@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
- layout 'events'
+
 def index
     @photos = Photo.all
   end

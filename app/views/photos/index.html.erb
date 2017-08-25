@@ -1,39 +1,50 @@
   <p id="notice"><%= notice %></p>
 
-<h1>Salones de Fiestas</h1>
-<table>
-  <tbody>
-    <% @photos.each do |photo| %>
-<tr>
-        <td class="image">
-          <%= image_tag(photo.image, class: 'list_image', style: 'display: block; margin: auto; width:100%; max-width:300px;left top no-repeat; height:100%; max-height:300px;')%>
-        </td>
-        <td class="description">
-          <h1><%= photo.name %></h1>
-          <div class="price">
-            <%= number_to_currency(photo.price) %>
-          </div>
-          <p>
-            <%= truncate(strip_tags(photo.description), length: 80) %>
+
+
+             <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Salones En Dolores Hidalgo</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">Los salones disponibles en la ciudad de Dolores Hidalgo, son salones con calidad, para ofrecerle el mejor servicio y disfrute al máximo de su evento.</p>
+        </div>
+      </div>
+    </div>
+         <% @photos.each do |photo| %>
+    <div class="container about-container wow fadeInUp">
+      <div class="row"> 
+        
+        <div class="col-md-6 about-content">
+
+               <%= image_tag(photo.image, :style => 'width:100%; max-width:300px;left top no-repeat; height:100%; max-height:300px;') %>     
+
+        </div>
+          
+        <div class="col-md-6">
+
+          <h2 class="about-title"><%= photo.name %></h2>
+          <p class="about-text">
+            <%= photo.description %>
           </p>
-        </td>
+          <h4>$ <%= photo.price %> pesos</h4>
 
-        <td class="actions">
-          <ul>
-            <% if user_signed_in? %>
-            <li><%= link_to 'Modificar', edit_photo_path(photo), :class => 'btn btn-success' %></li>
-            <li><%= link_to 'Eliminar', photo, 
+
+        </div>
+      </div>
+      <br>
+         <% if user_signed_in? %>
+      <%= link_to 'Modificar', edit_photo_path(photo), :class => 'btn btn-success' %>
+            <%= link_to 'Eliminar', photo, 
                           method: :delete,
-                          data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></li>
-            <% end %>
-          </ul>
-        </td>
-        <% end %>
-        <br><br>
-      </tr>
-  </tbody>
-</table>
+                          data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+      <% end %>
+    </div>
+         </div> 
+    <% end %>
+    <br>
 
-            <% if user_signed_in? %>
-            <li><%= link_to 'Agregar Salón', new_photo_path, :class => 'btn btn-info' %></li>
-            <% end %>
+  <% if user_signed_in? %>
+            <%= link_to 'Agregar Salón', new_photo_path, :class => 'btn btn-info' %>
+    <% end %>
+<br><br>
