@@ -15,13 +15,15 @@
           <div class="price">
             <%= number_to_currency(photo.price) %>
           </div>
-          <% if user_signed_in? %>
+         
           <p>
             <%= button_to 'Apartar Ya', line_items_path(photo_id: photo, locale: I18n.locale),
                               remote: true%>
 
              </p>
-             <% end %>
+                 <%= button_to 'Apartar Ya', line_items_path(photo_id: photo, locale: I18n.locale),
+                              remote: true%>
+          
              </td>
               <br>
               </tr>
